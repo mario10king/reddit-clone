@@ -43,6 +43,7 @@ end
 
 group :test do 
   gem 'capybara'
+  gem 'apparition'
   gem 'database_cleaner'
 end
 
