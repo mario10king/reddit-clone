@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class SignUp extends Component {
   constructor(props){
     super(props)
-    this.state = { email: "", password: ""}
+    this.state = { username: "", password: ""}
   
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -14,17 +14,18 @@ class SignUp extends Component {
     fetch('/users', {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify({username: this.state.email, password: this.state.password})
+      body: JSON.stringify({username: this.state.username, password: this.state.password})
     }).then(response => { 
-      this.setState({email: "", password: ""})
+      localStorage.setItem("loggedIn", true)
+      this.setState({username: "", password: ""})
     }).catch((error) => {
       console.log(error)
     })
   }
 
   handleChange(e, type) {
-    if (type === "email"){
-      this.setState({email: e.target.value})
+    if (type === "username"){
+      this.setState({username: e.target.value})
     }else if(type === "password"){
       this.setState({password: e.target.value})
     }
@@ -33,9 +34,11 @@ class SignUp extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} >
-        <input type="email" name="email" value={this.state.email} onChange={(e) => this.handleChange(e, "email")}/>
+        Username:
+        <input type="input" name="username" value={this.state.username} onChange={(e) => this.handleChange(e, "username")}/>
+        Password:
         <input type="password" name="password" value={this.state.password} onChange={(e) => this.handleChange(e, "password")}/>
-        <input type="submit"/>
+        <input type="submit" value="Sign Up"/>
       </form>
     );
   }

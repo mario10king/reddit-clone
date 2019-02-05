@@ -20,9 +20,9 @@ class SignOut extends Component {
 
   render() {
     return (
-      <div>
-      {localStorage.getItem('loggedIn') && <button onClick={this.handleSubmit}/>}
-    </div>
+      <button onClick={this.handleSubmit}>
+        LogOut
+      </button>
     );
   }
 }
