@@ -6,14 +6,12 @@ import Home from './Home';
 import SignIn from './Users/SignIn';
 import SignUp from './Users/SignUp';
 import NewPost from './Posts/NewPost';
-//import User from './Users/Users';
-//import Post from './Posts/Post';
+import Post from './Posts/Post';
+import User from './Users/User';
 
 
 class App extends Component {
   render() {
-          //<Route path="/user/:id" component={User} />
-          //<Route path="/post/:id" component={Post} />
     return (
       <Router>
         <div className="App">
@@ -22,6 +20,8 @@ class App extends Component {
           <Route path="/sign_up" component={SignUp} />
           <Route path="/sign_in" component={SignIn} />
           <Route path="/post" component={NewPost} />
+          <Route path="/posts/:id" component={Post} />
+          <Route path="/users/:id" component={User} />
         </div>
       </Router>
     );

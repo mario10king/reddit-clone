@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import  Post from './Post';
+import  {Link} from 'react-router-dom';
 
 class Posts extends Component {
   constructor(props){
@@ -16,7 +18,10 @@ class Posts extends Component {
 
   render() {
     var posts = this.state.posts.map(function(post) {
-      return <li key={post.id}>{post.body}</li>
+      return <Link to={"/posts/"+ post.id} id={post.id}><li key={post.id}>
+        {post.body}
+        </li>
+      </Link>
     })
     return (
       <ul>

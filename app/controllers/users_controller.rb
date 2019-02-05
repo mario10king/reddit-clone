@@ -26,5 +26,10 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     render status: :ok
   end
+
+  def show
+    user =  User.find_by(id: params[:id])
+    render json: user.to_json, status: :ok
+  end
 end
 
