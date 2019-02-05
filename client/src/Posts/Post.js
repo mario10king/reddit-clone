@@ -17,12 +17,12 @@ class Post extends Component {
   }
 
   render() {
-        //{this.state.posts.username}
-        //{this.state.posts.title}
         //{this.state.posts.category}
     return (
       <div>
-        {this.state.posts.body}
+        Title: {this.state.posts.title} <br/>
+        Body: {this.state.posts.body}<br/>
+        Username: {this.state.posts.username}<br/>
       </div>
     );
   }

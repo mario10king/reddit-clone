@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   def create
     if session[:user_id]
       body = JSON.parse(request.body.read)
-      Post.create(body: body)
+      current_user.posts.create(title: body["title"], body: body["body"])
       render status: :ok
     else
       render status: 401
@@ -16,7 +16,8 @@ class PostsController < ApplicationController
 
 
   def show 
-    @post = Post.find(params[:id])
+    post = Post.find(params[:id])
+    @post = {title: post.title, body: post.body, username: post.user.username}
     render json: @post.to_json
   end
 end
