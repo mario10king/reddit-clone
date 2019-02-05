@@ -4,7 +4,7 @@ feature "User visits home page", js: true do
   scenario "succesfully" do
     visit homepage 
    
-    expect(page).to have_css "a", text: "React"
+    expect(page).to have_css "h1", text: "Reddit Clone"
   end
 
   def homepage
