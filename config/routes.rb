@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :posts , only: [:create, :index]
+  resources :posts, only: [:create, :index]
+  resources :users, only: [:create] 
+  resources :sessions, only: [:create, :destroy]
+  post '/sign_in' => "users#sign_in"
+  post '/sign_out' => "users#sign_out"
 end
