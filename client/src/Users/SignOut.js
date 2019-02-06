@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import style from './SignOut.module.css'
 
 class SignOut extends Component {
   constructor(props){
@@ -13,7 +14,7 @@ class SignOut extends Component {
       headers: { 'Content-type': 'application/json' },
     }).then(response => { 
       if(response.ok){
-      localStorage.removeItem("loggedIn");
+        localStorage.removeItem("loggedIn");
         this.props.reload()
       }
     }).catch((error) => {
@@ -22,10 +23,8 @@ class SignOut extends Component {
   }
 
   render() {
-
-    var style = {position: "absolute", right: "5%", height: "50px", width: "100px",fontSize: "24px"};
     return (
-      <button style={style} onClick={this.handleSubmit}>
+      <button className={style.button}onClick={this.handleSubmit}>
         LogOut
       </button>
     );

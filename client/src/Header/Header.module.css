@@ -1,0 +1,17 @@
+.link{
+  text-decoration: none;
+}
+
+.header {
+  height: 125px;
+  position: relative; 
+  background-color: white; 
+  text-align: center;
+}
+
+.title {
+  color:  black;
+  margin-top: 0px;
+  position: relative;
+  top: 40px; 
+}
