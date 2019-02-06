@@ -4,8 +4,14 @@ import style from './SignOut.module.css'
 class SignOut extends Component {
   constructor(props){
     super(props)
-  
+
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSuccess = this.handleSuccess.bind(this)
+  }
+
+  handleSuccess(){
+    localStorage.removeItem("loggedIn");
+    this.props.reload()
   }
 
   handleSubmit() {
@@ -13,9 +19,8 @@ class SignOut extends Component {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
     }).then(response => { 
-      if(response.ok){
-        localStorage.removeItem("loggedIn");
-        this.props.reload()
+      if(response.ok) {
+        this.handleSuccess()
       }
     }).catch((error) => {
       console.log(error)
@@ -24,7 +29,7 @@ class SignOut extends Component {
 
   render() {
     return (
-      <button className={style.button}onClick={this.handleSubmit}>
+      <button className={style.button} onClick={this.handleSubmit}>
         LogOut
       </button>
     );

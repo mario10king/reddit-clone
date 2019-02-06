@@ -1,48 +1,49 @@
 import React, { Component } from 'react';
+import Form from './Form'
 
 class SignUp extends Component {
   constructor(props){
     super(props)
-    this.state = { username: "", password: ""}
-  
+    this.state = {wrongData: false}
+
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+    this.handleSuccess = this.handleSuccess.bind(this)
+    this.handleFailure = this.handleFailure.bind(this)
   }
 
-  handleSubmit(e) {
+  handleSuccess() {
+    localStorage.setItem("loggedIn", true);
+    this.props.history.push('/')
+  }
+
+  handleFailure() {
+    this.setState({wrongData: true}) 
+  }
+
+  handleSubmit(e, data) {
     e.preventDefault();
     fetch('/users', {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify({username: this.state.username, password: this.state.password})
+      body: JSON.stringify(data)
     }).then(response => { 
       if(response.ok){
-      this.setState({username: "", password: ""})
-      localStorage.setItem("loggedIn", true);
-      this.props.history.push('/')
+        this.handleSuccess()
+      } else {
+        this.handleFailure()
       }
     }).catch((error) => {
       console.log(error)
     })
   }
 
-  handleChange(e, type) {
-    if (type === "username"){
-      this.setState({username: e.target.value})
-    }else if(type === "password"){
-      this.setState({password: e.target.value})
-    }
-  }
-
   render() {
     return (
-      <form onSubmit={this.handleSubmit} >
-        Username:
-        <input type="input" name="username" value={this.state.username} onChange={(e) => this.handleChange(e, "username")}/>
-        Password:
-        <input type="password" name="password" value={this.state.password} onChange={(e) => this.handleChange(e, "password")}/>
-        <input type="submit" value="Sign Up"/>
-      </form>
+      <div style={{textAlign: "center"}}>
+        {this.state.wrongData && <h3 style={{color: "red"}}>Username and/or Password are Not Valid</h3>}
+        <Form handleSubmit={this.handleSubmit} value={"Sign Up"}/>
+      </div>
+
     );
   }
 }
