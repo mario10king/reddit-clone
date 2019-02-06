@@ -14,7 +14,7 @@ class SignOut extends Component {
     }).then(response => { 
       if(response.ok){
       localStorage.removeItem("loggedIn");
-      this.props.history.push('/')
+        this.props.reload()
       }
     }).catch((error) => {
       console.log(error)
@@ -22,8 +22,10 @@ class SignOut extends Component {
   }
 
   render() {
+
+    var style = {position: "absolute", right: "5%", height: "50px", width: "100px",fontSize: "24px"};
     return (
-      <button onClick={this.handleSubmit}>
+      <button style={style} onClick={this.handleSubmit}>
         LogOut
       </button>
     );
