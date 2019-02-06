@@ -15,13 +15,4 @@ class ApplicationController < ActionController::API
     JSON.parse(request.body.read)
   end
 
-  def formatted_posts(posts)
-    posts.map do |post|
-      format_post(post)
-    end
-  end
-
-  def format_post(post)
-      {id: post.id, title: post.title, text: post.text, username: post.user.username}
-  end
 end

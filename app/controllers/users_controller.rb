@@ -32,7 +32,8 @@ class UsersController < ApplicationController
     user = User.find_by(username: params[:username])
     if user
       posts = user.posts
-      render json: format_posts(posts).to_json, status: :ok
+      feed = Feed.new
+      render json: feed.format_posts(posts).to_json, status: :ok
     else
       render status: 400
     end

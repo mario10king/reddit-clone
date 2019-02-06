@@ -14,15 +14,17 @@ class PostsController < ApplicationController
 
   def index 
     posts = Post.all
+    feed = Feed.new
 
-    render json: formatted_posts(posts).to_json
+    render json: feed.format_posts(posts).to_json
   end
 
   def show 
     post = Post.find(params[:id])
 
     if post
-      render json: format_post(post).to_json
+      feed = Feed.new
+      render json: feed.format_post(post).to_json
     else 
       render status: 400
     end
