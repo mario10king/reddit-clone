@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 import LoggedOutButtons from "./LoggedOutButtons";
 import LoggedInButtons from "./LoggedInButtons";
 import style from "./Header.module.css";
@@ -20,14 +20,14 @@ class Header extends Component {
     var buttons =  loggedIn ? <LoggedInButtons reload={this.reload}/> : <LoggedOutButtons/>;
 
     return (
-      <Link to="/" className={style.link}>
-        <div className={style.header}>
+      <div className={style.header}>
+        <Link to='/' className={style.link}>
           <h1 className={style.title}>
             Reddit Clone
           </h1>      
-          {buttons}
-        </div>
-      </Link>
+        </Link>
+        {buttons}
+      </div>
     );
   }
 }
