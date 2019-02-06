@@ -16,7 +16,10 @@ class SubmitPostForm extends Component {
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({title: this.state.title, body: this.state.body})
     }).then(response => { 
+      if(response.ok){
       this.setState({title: "", body: ""})
+      this.props.history.push('/')
+      }
     }).catch((error) => {
       console.log(error)
     })

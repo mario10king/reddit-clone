@@ -16,8 +16,11 @@ class SignUp extends Component {
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({username: this.state.username, password: this.state.password})
     }).then(response => { 
-      localStorage.setItem("loggedIn", true)
+      if(response.ok){
       this.setState({username: "", password: ""})
+      localStorage.setItem("loggedIn", true);
+      this.props.history.push('/')
+      }
     }).catch((error) => {
       console.log(error)
     })

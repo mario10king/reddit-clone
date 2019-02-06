@@ -12,7 +12,10 @@ class SignOut extends Component {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
     }).then(response => { 
+      if(response.ok){
       localStorage.removeItem("loggedIn");
+      this.props.history.push('/')
+      }
     }).catch((error) => {
       console.log(error)
     })

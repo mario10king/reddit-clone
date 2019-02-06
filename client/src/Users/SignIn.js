@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 
 class SignIn extends Component {
   constructor(props){
@@ -14,10 +15,13 @@ class SignIn extends Component {
     fetch('/sign_in', {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify({username: this.state.email, password: this.state.password})
+      body: JSON.stringify({username: this.state.username, password: this.state.password})
     }).then(response => { 
+      if(response.ok){
       this.setState({username: "", password: ""})
       localStorage.setItem("loggedIn", true);
+      this.props.history.push('/')
+      }
     }).catch((error) => {
       console.log(error)
     })
@@ -38,7 +42,7 @@ class SignIn extends Component {
         <input type="input" name="username" value={this.state.username} onChange={(e) => this.handleChange(e, "username")}/>
         Password:
         <input type="password" name="password" value={this.state.password} onChange={(e) => this.handleChange(e, "password")}/>
-        <input type="submit" value="Sign In"/>
+         <input type="submit" value="Sign In"/>
       </form>
     );
   }
