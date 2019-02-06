@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   def create
     body = get_body(request) 
-    post = current_user.posts.new(title: body["title"], text: body["text"])
+    post = current_user.posts.new(title: body["title"], text: body["text"], category: body["category"])
 
     if post.save
       render status: :created
