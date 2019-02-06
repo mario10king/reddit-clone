@@ -1,27 +1,30 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user, only: [:create]
+
   def create
-    if session[:user_id]
-      body = JSON.parse(request.body.read)
-      current_user.posts.create(title: body["title"], body: body["body"])
-      render status: :ok
+    body = get_body(request) 
+    post = current_user.posts.new(title: body["title"], text: body["text"])
+
+    if post.save
+      render status: :created
     else
-      render status: 401
+      render status: 400
     end
   end
 
   def index 
-    @posts = Post.all
-    foo = []
-    @posts.each do |post|
-      foo << {id: post.id, title: post.title, body: post.body, username: post.user.username}
-    end
-    render json: foo.to_json
-  end
+    posts = Post.all
 
+    render json: formatted_posts(posts).to_json
+  end
 
   def show 
     post = Post.find(params[:id])
-    @post = {title: post.title, body: post.body, username: post.user.username}
-    render json: @post.to_json
+
+    if post
+      render json: format_post(post).to_json
+    else 
+      render status: 400
+    end
   end
 end

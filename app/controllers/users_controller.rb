@@ -1,24 +1,25 @@
 class UsersController < ApplicationController
   def create
-    body = JSON.parse(request.body.read)
+    body = get_body(request)
     user = User.new(username: body["username"], password: body["password"])
 
     if user.save
       session[:user_id] = user.id
-      render status: :ok
+      render status: :created
     else
-      render status: 401
+      render status: 400
     end
   end
 
   def sign_in
-    body = JSON.parse(request.body.read)
+    body = get_body(request) 
     user =  User.find_by(username: body["username"]).try(:authenticate, body["password"])
+
    if user
       session[:user_id] = user.id
       render status: :ok
    else
-      render status: 401
+      render status: 400
    end
   end
 
@@ -28,8 +29,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    user =  User.find_by(id: params[:id])
-    render json: user.to_json, status: :ok
+    user = User.find_by(username: params[:username])
+    if user
+      posts = user.posts
+      render json: format_posts(posts).to_json, status: :ok
+    else
+      render status: 400
+    end
   end
 end
-
