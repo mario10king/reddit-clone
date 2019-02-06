@@ -11,7 +11,11 @@ class PostsController < ApplicationController
 
   def index 
     @posts = Post.all
-    render json: @posts.to_json
+    foo = []
+    @posts.each do |post|
+      foo << {id: post.id, title: post.title, body: post.body, username: post.user.username}
+    end
+    render json: foo.to_json
   end
 
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import  Post from './Post';
-import  {Link} from 'react-router-dom';
+import  PostPreview from './PostPreview';
 
 class Posts extends Component {
   constructor(props){
@@ -17,16 +17,14 @@ class Posts extends Component {
   }
 
   render() {
+    console.log(this.state)
     var posts = this.state.posts.map(function(post) {
-      return <Link to={"/posts/"+ post.id} id={post.id}><li key={post.id}>
-        {post.body}
-        </li>
-      </Link>
+      return <PostPreview post={post}/>
     })
     return (
-      <ul>
+      <div style={{width: "60%", margin: "10px auto"}}>
         {posts}
-      </ul>
+      </div>
     );
   }
 }
