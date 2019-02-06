@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user, only: [:create]
+  before_action :authenticate_user, only: [:create, :destroy]
 
   def create
     body = get_body(request) 
@@ -25,6 +25,16 @@ class PostsController < ApplicationController
       render json: format_post(post).to_json
     else 
       render status: 400
+    end
+  end
+
+  def destroy 
+    post = Post.find(params[:id])
+    if post.user == current_user
+      post.destroy
+      render status: 200
+    else
+      render status: 401
     end
   end
 end
