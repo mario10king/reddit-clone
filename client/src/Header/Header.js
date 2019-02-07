@@ -16,7 +16,7 @@ class Header extends Component {
   }
 
   render() {
-    var loggedIn = !!localStorage.getItem("loggedIn")
+    var loggedIn = !!localStorage.getItem("username")
     var buttons =  loggedIn ? <LoggedInButtons reload={this.reload}/> : <LoggedOutButtons/>;
 
     return (

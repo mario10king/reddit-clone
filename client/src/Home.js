@@ -14,7 +14,7 @@ class Home extends Component {
     )
     return (
       <div>
-        {!!localStorage.getItem("loggedIn") && button }
+        {!!localStorage.getItem("username") && button }
         <Posts/>
       </div>
     );

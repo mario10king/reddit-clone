@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
     if user.save
       session[:user_id] = user.id
-      render status: :created
+      render json: {username: user.username}.to_json, status: :created
     else
       render status: 400
     end
@@ -13,11 +13,11 @@ class UsersController < ApplicationController
 
   def sign_in
     body = get_body(request) 
-    user =  User.find_by(username: body["username"]).try(:authenticate, body["password"])
+    user = User.find_by(username: body["username"]).try(:authenticate, body["password"])
 
    if user
       session[:user_id] = user.id
-      render status: :ok
+      render json: {username: user.username}.to_json, status: :ok
    else
       render status: 400
    end

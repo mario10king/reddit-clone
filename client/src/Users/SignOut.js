@@ -10,7 +10,7 @@ class SignOut extends Component {
   }
 
   handleSuccess(){
-    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("username");
     this.props.reload()
   }
 

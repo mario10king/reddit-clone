@@ -11,8 +11,8 @@ class SignIn extends Component {
     this.handleFailure = this.handleFailure.bind(this)
   }
 
-  handleSuccess() {
-    localStorage.setItem("loggedIn", true);
+  handleSuccess(body) {
+    localStorage.setItem("username", body.username);
     this.props.history.push('/')
   }
 
@@ -26,9 +26,9 @@ class SignIn extends Component {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify(data)
-    }).then(response => { 
+    }).then(response => {
       if(response.ok) {
-        this.handleSuccess()
+        return response.json().then(body => this.handleSuccess(body))
       } else {
         this.handleFailure()
       }
