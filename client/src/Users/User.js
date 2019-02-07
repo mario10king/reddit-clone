@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
-import {Link} from "react-router-dom"
+import Feed from "../Posts/Feed"
 
 class User extends Component {
   constructor(props){
     super(props)
-    this.state = {user: []}
+    this.state = {posts: []}
   }
 
   componentDidMount(){
-    var id = this.props.match.params.id
-    fetch('/users/'+id).then(results => { 
+    var username = this.props.match.params.username
+
+    fetch('/users/'+username).then(results => { 
       return results.json()
     }).then(data => {
-      this.setState({user: data}) 
+      this.setState({posts: data}) 
     })
   }
 
   render() {
     return (
-      <div>
-        {this.state.user.username}
-      </div>
+      <Feed posts={this.state.posts}/>
     );
   }
 }

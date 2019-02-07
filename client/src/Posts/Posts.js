@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import  Post from './Post';
-import  PostPreview from './PostPreview';
+import Feed from './Feed';
 
 class Posts extends Component {
   constructor(props){
@@ -17,14 +16,8 @@ class Posts extends Component {
   }
 
   render() {
-    console.log(this.state)
-    var posts = this.state.posts.map(function(post) {
-      return <PostPreview post={post}/>
-    })
     return (
-      <div style={{width: "60%", margin: "10px auto"}}>
-        {posts}
-      </div>
+      <Feed posts={this.state.posts}/> 
     );
   }
 }

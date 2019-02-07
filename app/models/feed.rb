@@ -6,6 +6,6 @@ class Feed
   end
 
   def format_post(post)
-      {id: post.id, title: post.title, text: post.text, username: post.user.username}
+    {id: post.id, title: post.title, text: post.text, category: post.category, username: post.user.username}
   end
 end

@@ -7,12 +7,12 @@ import style from "./Header.module.css";
 class Header extends Component {
   constructor(props){
     super(props)
-
+    
     this.reload = this.reload.bind(this)
   }
 
   reload() {
-    this.forceUpdate()
+    window.location.reload()
   }
 
   render() {
