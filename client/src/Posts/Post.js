@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom"
 import style from "./Post.module.css"
+import Delete from "./Delete"
 
 class Post extends Component {
   constructor(props){
@@ -21,6 +22,16 @@ class Post extends Component {
 
   render() {
     var post = this.state.post
+    var username = localStorage.username
+
+    var action = (
+      <div className={style.action}>
+        <button className={style.edit}>
+          Edit 
+        </button>
+        <Delete id={post.id}/>
+      </div>
+    )
 
     return (
       <div className={style.container}>
@@ -30,6 +41,7 @@ class Post extends Component {
           <span className={style.username}>Posted by: {post.username}</span>
         </Link> <br/>
         <span className={style.text}>{post.text}</span>
+        { username === post.username && action}
       </div>
     );
   }
