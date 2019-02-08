@@ -8,7 +8,7 @@ class Show extends Component {
     super(props);
 
     this.state = {
-      post: {}
+      post: {user: {}}
     };
   }
 
@@ -43,12 +43,12 @@ class Show extends Component {
       <div className={style.container}>
         <span className={style.category}>Category: {post.category}</span>
         <span className={style.title}>{post.title}</span>
-        <Link to={'/user/' + post.username}>
-          <span className={style.username}>Posted by: {post.username}</span>
+        <Link to={'/user/' + post.user.username}>
+          <span className={style.username}>Posted by: {post.user.username}</span>
         </Link>{' '}
         <br />
         <span className={style.text}>{post.text}</span>
-        {username === post.username && action}
+        {username === post.user.username && action}
       </div>
     );
   }

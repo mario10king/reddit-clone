@@ -6,6 +6,6 @@ class Feed
   end
 
   def format_post(post)
-    {id: post.id, title: post.title, text: post.text, category: post.category, username: post.user.username}
+    post.as_json(include: {user: {only: :username}}, only: [:id, :title, :text, :category])
   end
 end

@@ -20,8 +20,8 @@ class Preview extends Component {
             {append && '...'}
           </span>
         </Link>
-        <Link to={'/user/' + post.username}>
-          <span className={style.username}>Posted by: {post.username}</span>
+        <Link to={'/user/' + post.user.username}>
+          <span className={style.username}>Posted by: {post.user.username}</span>
         </Link>
       </div>
     );

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
     if user.save
       session[:user_id] = user.id
-      render json: {username: user.username}.to_json, status: :created
+      render json: user.as_json({only: :username}), status: :created
     else
       render status: 400
     end
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
    if user
       session[:user_id] = user.id
-      render json: {username: user.username}.to_json, status: :ok
+      render json: user.as_json({only: :username}), status: :ok
    else
       render status: 400
    end
