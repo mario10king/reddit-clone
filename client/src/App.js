@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter as  Router, Route} from "react-router-dom"
 import {Switch} from "react-router"
 import './App.module.css';
-import Header from './Header/Header';
+import ShowHeader from './Header/Show';
 import Home from './Home';
 import ShowUser from './User/Show';
 import NewUser from './User/New';
@@ -17,7 +17,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Header/>
+          <ShowHeader/>
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/user/new" component={NewUser} />

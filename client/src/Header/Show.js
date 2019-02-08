@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom'
 import LoggedOutButtons from "./LoggedOutButtons";
 import LoggedInButtons from "./LoggedInButtons";
-import style from "./Header.module.css";
+import style from "./Show.module.css";
 
-class Header extends Component {
+class Show extends Component {
   constructor(props){
     super(props)
     
@@ -32,4 +32,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default Show;
