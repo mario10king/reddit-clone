@@ -7,8 +7,8 @@ If you have `heroku cli` installed you can run the development server with `rail
 It's hosted on Heroku [here](https://reddit-clone-snap.herokuapp.com/).
 
 ## Description
-CRUD App with some of the basic functionality of Reddit.
-Backend: Rails API 
+CRUD App with some of the basic functionality of Reddit.  
+Backend: Rails API   
 Frontend: React
 
 ## Things to work on
@@ -16,3 +16,4 @@ Frontend: React
 * Testing
 * Security
 * Responsive Design
+
