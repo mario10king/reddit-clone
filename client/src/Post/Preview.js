@@ -12,14 +12,14 @@ class Preview extends Component {
      
     return (
       <div className={style.container}>
-        <Link to={"/posts/"+ post.id}>
+        <Link to={"/post/"+ post.id}>
           <span className={style.title}>{post.title}</span>
           <span className={style.category}>Category: {post.category}</span>
           <span className={style.text}>{post.text.substring(0, 480)}
             {append && "..."}
           </span>
         </Link>
-        <Link to={"/users/"+ post.username}>
+        <Link to={"/user/"+ post.username}>
           <span className={style.username}>Posted by: {post.username}</span>
         </Link>
       </div>

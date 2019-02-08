@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import SignOut from "../Users/SignOut";
+import SignOut from "../User/SignOut";
 
 class LoggedInButtons extends Component {
   render() {

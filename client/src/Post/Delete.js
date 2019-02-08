@@ -11,7 +11,7 @@ class Delete extends Component {
   }
 
   handleSuccess() {
-    this.props.history.push('/users/' + localStorage.username)
+    this.props.history.push('/user/' + localStorage.username)
   }
 
   handleDelete(id) {

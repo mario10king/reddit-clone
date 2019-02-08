@@ -24,7 +24,7 @@ class Edit extends Component {
 
   handleSuccess() {
     var id = this.props.match.params.id
-    this.props.history.push('/posts/'+ id)
+    this.props.history.push('/post/'+ id)
   }
 
   handleFailure() {

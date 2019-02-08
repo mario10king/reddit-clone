@@ -26,7 +26,7 @@ class Show extends Component {
 
     var action = (
       <div className={style.action}>
-        <Link to={"/posts/"+post.id+"/edit"}>
+        <Link to={"/post/"+post.id+"/edit"}>
           <button className={style.edit}>
             Edit 
           </button>
@@ -39,7 +39,7 @@ class Show extends Component {
       <div className={style.container}>
         <span className={style.category}>Category: {post.category}</span>
         <span className={style.title}>{post.title}</span>
-        <Link to={"/users/"+ post.username}>
+        <Link to={"/user/"+ post.username}>
           <span className={style.username}>Posted by: {post.username}</span>
         </Link> <br/>
         <span className={style.text}>{post.text}</span>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Feed from "../Posts/Feed"
+import Feed from "../Post/Feed"
 
-class User extends Component {
+class Show extends Component {
   constructor(props){
     super(props)
     this.state = {posts: []}
@@ -24,4 +24,4 @@ class User extends Component {
   }
 }
 
-export default User;
+export default Show;

@@ -6,10 +6,10 @@ class LoggedOutButtons extends Component {
   render() {
     return (
       <div className={style.loggedOutButtons}>
-        <Link to="/sign_in">
+        <Link to="/user/sign_in">
           <button className={style.button}>Sign In</button>
         </Link>
-        <Link to="/sign_up">
+        <Link to="/user/new">
           <button className={style.button}>Sign Up</button>
         </Link>
       </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Form from './Form'
 
-class SignUp extends Component {
+class New extends Component {
   constructor(props){
     super(props)
     this.state = {wrongData: false}
@@ -48,4 +48,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default New;
