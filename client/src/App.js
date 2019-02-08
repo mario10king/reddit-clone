@@ -7,6 +7,7 @@ import SignIn from './Users/SignIn';
 import SignUp from './Users/SignUp';
 import SubmitPostForm from './Posts/SubmitPostForm';
 import Post from './Posts/Post';
+import SubmitEditForm from './Posts/SubmitEditForm';
 import User from './Users/User';
 
 
@@ -20,7 +21,8 @@ class App extends Component {
           <Route path="/sign_up" component={SignUp} />
           <Route path="/sign_in" component={SignIn} />
           <Route path="/post" component={SubmitPostForm} />
-          <Route path="/posts/:id" component={Post} />
+          <Route path="/posts/:id" exact component={Post} />
+          <Route path="/posts/:id/edit" component={SubmitEditForm} />
           <Route path="/users/:username" component={User} />
         </div>
       </Router>

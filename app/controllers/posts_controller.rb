@@ -30,6 +30,21 @@ class PostsController < ApplicationController
     end
   end
 
+  def update
+    post = Post.find(params[:id])
+    body = get_body(request) 
+
+    if post.user == current_user
+      updated = post.update(title: body["title"], text: body["text"], category: body["category"])
+    end
+
+    if updated 
+      render status: :ok
+    else
+      render status: 400
+    end
+  end
+
   def destroy 
     post = Post.find(params[:id])
     if post.user == current_user

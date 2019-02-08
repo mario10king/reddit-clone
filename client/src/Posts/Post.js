@@ -26,9 +26,11 @@ class Post extends Component {
 
     var action = (
       <div className={style.action}>
-        <button className={style.edit}>
-          Edit 
-        </button>
+        <Link to={"/posts/"+post.id+"/edit"}>
+          <button className={style.edit}>
+            Edit 
+          </button>
+        </Link>
         <Delete id={post.id}/>
       </div>
     )
