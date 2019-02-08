@@ -1,129 +1,67 @@
-import React, {
-  Component
-} from 'react';
+import React, { Component } from 'react';
 import Form from './Form';
 
 class SignIn extends Component {
-  constructor(
-    props
-  ) {
-    super(
-      props
-    );
+  constructor(props) {
+    super(props);
     this.state = {
       wrongData: false
     };
 
-    this.handleSubmit = this.handleSubmit.bind(
-      this
-    );
-    this.handleSuccess = this.handleSuccess.bind(
-      this
-    );
-    this.handleFailure = this.handleFailure.bind(
-      this
-    );
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSuccess = this.handleSuccess.bind(this);
+    this.handleFailure = this.handleFailure.bind(this);
   }
 
-  handleSuccess(
-    body
-  ) {
-    localStorage.setItem(
-      'username',
-      body.username
-    );
-    this.props.history.push(
-      '/'
-    );
+  handleSuccess(body) {
+    localStorage.setItem('username', body.username);
+    this.props.history.push('/');
   }
 
   handleFailure() {
-    this.setState(
-      {
-        wrongData: true
-      }
-    );
+    this.setState({
+      wrongData: true
+    });
   }
 
-  handleSubmit(
-    e,
-    data
-  ) {
+  handleSubmit(e, data) {
     e.preventDefault();
-    fetch(
-      '/sign_in',
-      {
-        method:
-          'POST',
-        headers: {
-          'Content-type':
-            'application/json'
-        },
-        body: JSON.stringify(
-          data
-        )
-      }
-    )
-      .then(
-        response => {
-          if (
-            response.ok
-          ) {
-            return response
-              .json()
-              .then(
-                body =>
-                  this.handleSuccess(
-                    body
-                  )
-              );
-          } else {
-            this.handleFailure();
-          }
+    fetch('/sign_in', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json().then(body => this.handleSuccess(body));
+        } else {
+          this.handleFailure();
         }
-      )
-      .catch(
-        error => {
-          console.log(
-            error
-          );
-        }
-      );
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   render() {
     return (
       <div
         style={{
-          textAlign:
-            'center'
+          textAlign: 'center'
         }}
       >
-        {this
-          .state
-          .wrongData && (
+        {this.state.wrongData && (
           <h3
             style={{
-              color:
-                'red'
+              color: 'red'
             }}
           >
-            Username
-            and/or
-            Password
-            are
-            Incorrect
+            Username and/or Password are Incorrect
           </h3>
         )}
-        <Form
-          handleSubmit={
-            this
-              .handleSubmit
-          }
-          value={
-            'Sign In'
-          }
-        />
+        <Form handleSubmit={this.handleSubmit} value={'Sign In'} />
       </div>
     );
   }
