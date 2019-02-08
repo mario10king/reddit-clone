@@ -1,25 +1,56 @@
-import React, { Component } from 'react';
-import Feed from "../Post/Feed"
+import React, {
+  Component
+} from 'react';
+import Feed from '../Post/Feed';
 
 class Show extends Component {
-  constructor(props){
-    super(props)
-    this.state = {posts: []}
+  constructor(
+    props
+  ) {
+    super(
+      props
+    );
+    this.state = {
+      posts: []
+    };
   }
 
-  componentDidMount(){
-    var username = this.props.match.params.username
+  componentDidMount() {
+    var username = this
+      .props
+      .match
+      .params
+      .username;
 
-    fetch('/users/'+username).then(results => { 
-      return results.json()
-    }).then(data => {
-      this.setState({posts: data}) 
-    })
+    fetch(
+      '/users/' +
+        username
+    )
+      .then(
+        results => {
+          return results.json();
+        }
+      )
+      .then(
+        data => {
+          this.setState(
+            {
+              posts: data
+            }
+          );
+        }
+      );
   }
 
   render() {
     return (
-      <Feed posts={this.state.posts}/>
+      <Feed
+        posts={
+          this
+            .state
+            .posts
+        }
+      />
     );
   }
 }

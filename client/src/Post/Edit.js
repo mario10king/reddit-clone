@@ -1,60 +1,160 @@
-import React, { Component } from 'react';
-import EditForm from './EditForm'
+import React, {
+  Component
+} from 'react';
+import EditForm from './EditForm';
 
 class Edit extends Component {
-  constructor(props){
-    super(props)
-    this.state = { authorized: true, post: {}}
+  constructor(
+    props
+  ) {
+    super(
+      props
+    );
+    this.state = {
+      authorized: true,
+      post: {}
+    };
 
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleSuccess = this.handleSuccess.bind(this)
-    this.handleFailure = this.handleFailure.bind(this)
-  } 
+    this.handleSubmit = this.handleSubmit.bind(
+      this
+    );
+    this.handleSuccess = this.handleSuccess.bind(
+      this
+    );
+    this.handleFailure = this.handleFailure.bind(
+      this
+    );
+  }
 
-  componentDidMount(){
-    var id = this.props.match.params.id
+  componentDidMount() {
+    var id = this
+      .props
+      .match
+      .params
+      .id;
 
-    fetch('/posts/'+id).then(results => { 
-      return results.json()
-    }).then(data => {
-      this.setState({post: data}) 
-    })
-
+    fetch(
+      '/posts/' +
+        id
+    )
+      .then(
+        results => {
+          return results.json();
+        }
+      )
+      .then(
+        data => {
+          this.setState(
+            {
+              post: data
+            }
+          );
+        }
+      );
   }
 
   handleSuccess() {
-    var id = this.props.match.params.id
-    this.props.history.push('/post/'+ id)
+    var id = this
+      .props
+      .match
+      .params
+      .id;
+    this.props.history.push(
+      '/post/' +
+        id
+    );
   }
 
   handleFailure() {
-    this.setState({authorized: false}) 
+    this.setState(
+      {
+        authorized: false
+      }
+    );
   }
 
-  handleSubmit(e, input) {
+  handleSubmit(
+    e,
+    input
+  ) {
     e.preventDefault();
-    var id = this.props.match.params.id
+    var id = this
+      .props
+      .match
+      .params
+      .id;
 
-    fetch('/posts/'+ id, {
-      method: 'PUT',
-      headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify(input)
-    }).then(response => { 
-      if(response.ok){
-        this.handleSuccess()
-      } else {
-        this.handleFailure()
+    fetch(
+      '/posts/' +
+        id,
+      {
+        method:
+          'PUT',
+        headers: {
+          'Content-type':
+            'application/json'
+        },
+        body: JSON.stringify(
+          input
+        )
       }
-    }).catch((error) => {
-      console.log(error)
-    })
+    )
+      .then(
+        response => {
+          if (
+            response.ok
+          ) {
+            this.handleSuccess();
+          } else {
+            this.handleFailure();
+          }
+        }
+      )
+      .catch(
+        error => {
+          console.log(
+            error
+          );
+        }
+      );
   }
 
   render() {
     return (
-      <div style={{textAlign: "center"}}>
-        {!this.state.authorized && <h3 style={{color: "red"}}>Not Authorized to Edit This Post</h3>}
-        <EditForm post={this.state.post} handleSubmit={this.handleSubmit} />
+      <div
+        style={{
+          textAlign:
+            'center'
+        }}
+      >
+        {!this
+          .state
+          .authorized && (
+          <h3
+            style={{
+              color:
+                'red'
+            }}
+          >
+            Not
+            Authorized
+            to
+            Edit
+            This
+            Post
+          </h3>
+        )}
+        <EditForm
+          post={
+            this
+              .state
+              .post
+          }
+          handleSubmit={
+            this
+              .handleSubmit
+          }
+        />
       </div>
     );
   }
