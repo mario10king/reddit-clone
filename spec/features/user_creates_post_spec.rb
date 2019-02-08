@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "User creates post", js: true do 
+xfeature "User creates post", js: true do 
   scenario "succesfully" do
     visit homepage 
     fill_in "body", with: "Greatest Post Ever"

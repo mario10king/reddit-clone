@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "User visits home page", js: true do 
+xfeature "User visits home page", js: true do 
   scenario "succesfully" do
     visit homepage 
    
