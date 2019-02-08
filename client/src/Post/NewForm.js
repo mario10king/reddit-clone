@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import style from './NewPostForm.module.css'
+import style from './NewForm.module.css'
 
-class NewPostForm extends Component {
+class NewForm extends Component {
   constructor(props){
     super(props)
     this.state = { title: "", text: "", category: ""}
@@ -37,4 +37,4 @@ class NewPostForm extends Component {
   }
 }
 
-export default NewPostForm;
+export default NewForm;

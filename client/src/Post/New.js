@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import NewPostForm from './NewPostForm'
+import NewForm from './NewForm'
 
-class SubmitPostForm extends Component {
+class New extends Component {
   constructor(props){
     super(props)
     this.state = {wrongData: false}
@@ -40,10 +40,10 @@ class SubmitPostForm extends Component {
     return (
       <div style={{textAlign: "center"}}>
         {this.state.wrongData && <h3 style={{color: "red"}}>Input Fields are not Valid</h3>}
-        <NewPostForm handleSubmit={this.handleSubmit} />
+        <NewForm handleSubmit={this.handleSubmit} />
       </div>
     );
   }
 }
 
-export default SubmitPostForm;
+export default New;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import PostEdit from './PostEdit'
+import EditForm from './EditForm'
 
-class SubmitEditForm extends Component {
+class Edit extends Component {
   constructor(props){
     super(props)
     this.state = { authorized: true, post: {}}
@@ -54,10 +54,10 @@ class SubmitEditForm extends Component {
     return (
       <div style={{textAlign: "center"}}>
         {!this.state.authorized && <h3 style={{color: "red"}}>Not Authorized to Edit This Post</h3>}
-        <PostEdit post={this.state.post} handleSubmit={this.handleSubmit} />
+        <EditForm post={this.state.post} handleSubmit={this.handleSubmit} />
       </div>
     );
   }
 }
 
-export default SubmitEditForm;
+export default Edit;

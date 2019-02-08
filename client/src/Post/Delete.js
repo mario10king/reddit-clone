@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom'
-import style from "./Post.module.css"
+import style from "./Show.module.css"
 
 class Delete extends Component {
   constructor(props){

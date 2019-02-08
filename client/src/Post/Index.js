@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Feed from './Feed';
 
-class Posts extends Component {
+class Index extends Component {
   constructor(props){
     super(props)
     this.state = {posts: []}
@@ -22,4 +22,4 @@ class Posts extends Component {
   }
 }
 
-export default Posts;
+export default Index;

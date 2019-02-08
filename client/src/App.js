@@ -5,9 +5,9 @@ import './App.module.css';
 import Home from './Home';
 import SignIn from './Users/SignIn';
 import SignUp from './Users/SignUp';
-import SubmitPostForm from './Posts/SubmitPostForm';
-import Post from './Posts/Post';
-import SubmitEditForm from './Posts/SubmitEditForm';
+import NewPost from './Post/New';
+import ShowPost from './Post/Show';
+import EditPost from './Post/Edit';
 import User from './Users/User';
 
 
@@ -20,9 +20,9 @@ class App extends Component {
           <Route path="/" exact component={Home} />
           <Route path="/sign_up" component={SignUp} />
           <Route path="/sign_in" component={SignIn} />
-          <Route path="/post" component={SubmitPostForm} />
-          <Route path="/posts/:id" exact component={Post} />
-          <Route path="/posts/:id/edit" component={SubmitEditForm} />
+          <Route path="/post" component={NewPost} />
+          <Route path="/post/:id" exact component={ShowPost} />
+          <Route path="/post/:id/edit" component={EditPost} />
           <Route path="/users/:username" component={User} />
         </div>
       </Router>

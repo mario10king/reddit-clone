@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom"
-import style from "./Post.module.css"
+import style from "./Show.module.css"
 import Delete from "./Delete"
 
-class Post extends Component {
+class Show extends Component {
   constructor(props){
     super(props)
 
@@ -49,4 +49,4 @@ class Post extends Component {
   }
 }
 
-export default Post;
+export default Show;

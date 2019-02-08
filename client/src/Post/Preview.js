@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import style from './PostPreview.module.css'
+import style from './Preview.module.css'
 
-class PostPreview extends Component {
+class Preview extends Component {
   render() {
     var post = this.props.post
     var append = false
@@ -27,4 +27,4 @@ class PostPreview extends Component {
   }
 }
 
-export default PostPreview;
+export default Preview;

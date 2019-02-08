@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom"
-import Posts from './Posts/Posts'
+import IndexPosts from './Post/Index'
 import style from './Home.module.css'
 
 class Home extends Component {
@@ -15,7 +15,7 @@ class Home extends Component {
     return (
       <div>
         {!!localStorage.getItem("username") && button }
-        <Posts/>
+        <IndexPosts/>
       </div>
     );
   }
