@@ -16,4 +16,4 @@ Frontend: React
 * Testing
 * Security
 * Responsive Design
-
+* Modularizing API
