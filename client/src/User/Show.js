@@ -5,12 +5,13 @@ class Show extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: []
+      posts: [],
+      username: this.props.match.params.username
     };
   }
 
   componentDidMount() {
-    var username = this.props.match.params.username;
+    var username = this.state.username;
 
     fetch('/users/' + username)
       .then(results => {
@@ -24,7 +25,13 @@ class Show extends Component {
   }
 
   render() {
-    return <Feed posts={this.state.posts} />;
+    var username = this.state.username;
+    return (
+      <div>
+        <h2 style={{ textAlign: 'center' }}> Posts by {username}</h2>
+        <Feed posts={this.state.posts} />
+      </div>
+    );
   }
 }
 
