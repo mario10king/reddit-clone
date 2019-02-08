@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Run Dev Server
+If you have `heroku cli` installed you can run the development server with `rails start`.
 
-Things you may want to cover:
+## Hosting
+It's hosted on Heroku [here](https://reddit-clone-snap.herokuapp.com/).
 
-* Ruby version
+## Description
+CRUD App with some of the basic functionality of Reddit.
+Backend: Rails API 
+Frontend: React
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Things to work on
+* Authentication
+* Testing
+* Security
+* Responsive Design
