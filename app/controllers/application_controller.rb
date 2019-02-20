@@ -10,9 +10,4 @@ class ApplicationController < ActionController::API
       render status: 401
     end
   end
-
-  def get_body(request)
-    JSON.parse(request.body.read)
-  end
-
 end

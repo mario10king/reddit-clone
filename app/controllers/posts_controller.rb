@@ -2,8 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user, only: [:create, :destroy]
 
   def create
-    body = get_body(request) 
-    post = current_user.posts.new(title: body["title"], text: body["text"], category: body["category"])
+    post = current_user.posts.new(get_post_params)
 
     if post.save
       render status: :created
@@ -20,7 +19,7 @@ class PostsController < ApplicationController
   end
 
   def show 
-    post = Post.find(params[:id])
+    post = Post.find(get_post_id)
 
     if post
       feed = Feed.new
@@ -31,11 +30,10 @@ class PostsController < ApplicationController
   end
 
   def update
-    post = Post.find(params[:id])
-    body = get_body(request) 
+    post = Post.find(get_post_id)
 
     if post.user == current_user
-      updated = post.update(title: body["title"], text: body["text"], category: body["category"])
+      updated = post.update(get_post_params)
     end
 
     if updated 
@@ -46,12 +44,22 @@ class PostsController < ApplicationController
   end
 
   def destroy 
-    post = Post.find(params[:id])
+    post = Post.find(get_post_id)
     if post.user == current_user
       post.destroy
       render status: 200
     else
       render status: 401
     end
+  end
+
+  private
+
+  def get_post_params
+    params.permit(:title, :text, :category)
+  end
+
+  def get_post_id
+    params.require(:id)
   end
 end

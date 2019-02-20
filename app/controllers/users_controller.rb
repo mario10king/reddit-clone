@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   def create
-    body = get_body(request)
-    user = User.new(username: body["username"], password: body["password"])
+    user = User.new(get_params)
 
     if user.save
       session[:user_id] = user.id
@@ -12,8 +11,7 @@ class UsersController < ApplicationController
   end
 
   def sign_in
-    body = get_body(request) 
-    user = User.find_by(username: body["username"]).try(:authenticate, body["password"])
+    user = User.find_by(get_params_username).try(:authenticate, get_params_password[:password])
 
    if user
       session[:user_id] = user.id
@@ -29,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    user = User.find_by(username: params[:username])
+    user = User.find_by(get_params_username)
     if user
       posts = user.posts
       feed = Feed.new
@@ -37,5 +35,19 @@ class UsersController < ApplicationController
     else
       render status: 400
     end
+  end
+
+  private
+
+  def get_params
+    get_params_username.merge(get_params_password)
+  end
+
+  def get_params_password
+    params.permit(:password)
+  end
+
+  def get_params_username
+    params.permit(:username)
   end
 end
